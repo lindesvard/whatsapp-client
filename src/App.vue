@@ -39,7 +39,8 @@
 </template>
 
 <script>
-const API_URL = window.location.origin.replace(/\:\d+/, ':3000');
+const API_URL = 'http://chatapi.simplifier.se';
+
 import Dots from './Dots.vue';
 import Message from './Message.vue';
 const socket = io(API_URL);
