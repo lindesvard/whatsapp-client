@@ -8,10 +8,12 @@
     <div class="chat-container">
 
       <div class="user-list">
-        <button class="user-list__toggle" @click="($event) => $event.currentTarget.parentElement.classList.toggle('active')">
-          <span></span>
-          <span></span>
-          <span></span>
+        <button class="user-list__toggle" @click.prevnet="($event) => $event.currentTarget.parentElement.classList.toggle('active')">
+          <span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
         </button>
 
         <div :class="{'typing': isTyping(listUser), 'you': user.id === listUser.id}" v-for="(listUser, index) in users">
@@ -205,7 +207,7 @@ html, body {
 
 body {
   font-family: 'Open Sans', sans-serif;
-  font-size: 13px;
+  font-size: 16px;
   background: #343d46;
   background: linear-gradient(#3f4750, #283038);
 
@@ -222,6 +224,8 @@ body {
     min-height: 100%;
   }
 }
+
+select, textarea, input[type='text'], input[type='password'], input[type='datetime'], input[type='datetime-local'], input[type='date'], input[type='month'], input[type='time'], input[type='week'], input[type='number'], input[type='email'], input[type='url'], input[type='search'], input[type='tel'], input[type='color'] { font-size: 16px; }
 
 .app {
   height: 80vh;
@@ -281,9 +285,6 @@ body {
   border-radius: 35px;
   height: 40px;
   width: 40px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   background: rgba(0,0,0,.4);
   border: 0;
   cursor: pointer;
@@ -292,7 +293,14 @@ body {
     outline: 0;
   }
 
-  span {
+  > span {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  > span > span {
     display: block;
     width: 25px;
     height: 4px;
@@ -319,6 +327,7 @@ body {
   overflow-x: hidden;
   border-radius: 4px;
   background-color: #e5ddd5;
+  -webkit-overflow-scrolling: touch;
 }
 
 .chat__messages {
@@ -343,10 +352,13 @@ body {
 @media screen and (max-width: 480px) {
   .app {
     overflow: hidden;
+    margin: 0;
   }
 
   .chat__messages-container {
     height: 100%;
+    flex: 1;
+    display: flex;
   }
 
   .chat__messages {
@@ -371,15 +383,14 @@ body {
   }
 
   .user-list__toggle {
-    display: flex;
+    display: block;
   }
 }
 
 textarea, input {
   font-family: 'Open Sans', sans-serif;
-  font-size: 13px;
   width: 100%;
-  height: 38px;
+  height: 41px;
   display: block;
   border: 0;
   border-radius: 4px;
