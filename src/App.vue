@@ -207,7 +207,7 @@ html, body {
 
 body {
   font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   background: #343d46;
   background: linear-gradient(#3f4750, #283038);
 
@@ -225,7 +225,7 @@ body {
   }
 }
 
-select, textarea, input[type='text'], input[type='password'], input[type='datetime'], input[type='datetime-local'], input[type='date'], input[type='month'], input[type='time'], input[type='week'], input[type='number'], input[type='email'], input[type='url'], input[type='search'], input[type='tel'], input[type='color'] { font-size: 16px; }
+select, textarea, input[type='text'], input[type='password'], input[type='datetime'], input[type='datetime-local'], input[type='date'], input[type='month'], input[type='time'], input[type='week'], input[type='number'], input[type='email'], input[type='url'], input[type='search'], input[type='tel'], input[type='color'] { font-size: 14px; }
 
 .app {
   height: 80vh;
@@ -350,6 +350,10 @@ select, textarea, input[type='text'], input[type='password'], input[type='dateti
 }
 
 @media screen and (max-width: 480px) {
+  body, select, textarea, input[type='text'], input[type='password'], input[type='datetime'], input[type='datetime-local'], input[type='date'], input[type='month'], input[type='time'], input[type='week'], input[type='number'], input[type='email'], input[type='url'], input[type='search'], input[type='tel'], input[type='color'] {
+    font-size: 16px;
+  }
+  
   .app {
     overflow: hidden;
     margin: 0;
@@ -390,7 +394,7 @@ select, textarea, input[type='text'], input[type='password'], input[type='dateti
 textarea, input {
   font-family: 'Open Sans', sans-serif;
   width: 100%;
-  height: 41px;
+  height: 43px;
   display: block;
   border: 0;
   border-radius: 4px;
@@ -399,6 +403,7 @@ textarea, input {
   margin-top: 10px;
   transition: box-shadow .3s ease;
   box-shadow: 0 0 0px 0 rgba(0,0,0,0);
+  overflow: hidden;
 
   &:focus {
     outline: 0;
