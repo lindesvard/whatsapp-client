@@ -353,7 +353,7 @@ select, textarea, input[type='text'], input[type='password'], input[type='dateti
   body, select, textarea, input[type='text'], input[type='password'], input[type='datetime'], input[type='datetime-local'], input[type='date'], input[type='month'], input[type='time'], input[type='week'], input[type='number'], input[type='email'], input[type='url'], input[type='search'], input[type='tel'], input[type='color'] {
     font-size: 16px;
   }
-  
+
   .app {
     overflow: hidden;
     margin: 0;
@@ -362,7 +362,6 @@ select, textarea, input[type='text'], input[type='password'], input[type='dateti
   .chat__messages-container {
     height: 100%;
     flex: 1;
-    display: flex;
   }
 
   .chat__messages {
