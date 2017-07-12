@@ -15,16 +15,18 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          loaders: {
+          loaders: process.env.NODE_ENV === 'production' ?
+          // production
+          {
             scss: ExtractTextPlugin.extract({
-              use: 'css-loader!sass-loader',
+              use: 'css-loader!sass-loader!postcss-loader?sourceMap',
               fallback: 'vue-style-loader'
             }),
-            // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
-            // the "scss" and "sass" values for the lang attribute to the right configs here.
-            // other preprocessors should work out of the box, no loader config like this necessary.
-            // 'scss': 'vue-style-loader!css-loader!sass-loader!postcss-loader?sourceMap',
-            // 'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax!postcss-loader?sourceMap'
+          }
+          : // dev
+          {
+            'scss': 'vue-style-loader!css-loader!sass-loader!postcss-loader?sourceMap',
+            'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax!postcss-loader?sourceMap'
           }
           // other vue-loader options go here
         }
