@@ -117,7 +117,7 @@ export default {
     join(user) {
       this.$store.setUser(user);
       socket.emit('join channel', this.user);
-      window.onunload = () => socket.emit('leave channel', { id: this.user.id });
+      window.onunload = () => socket.emit('leave channel', this.user);
     },
 
     recievePeopleTyping(list) {
@@ -154,8 +154,8 @@ export default {
       });
     },
 
-    updateUserList(data) {
-      this.users = data.userList;
+    updateUserList(userList) {
+      this.users = userList;
     },
 
   },
