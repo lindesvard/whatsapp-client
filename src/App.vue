@@ -7,8 +7,8 @@
 
     <div class="chat-container">
 
-      <div class="user-list">
-        <button class="user-list__toggle" @click.prevnet="($event) => $event.currentTarget.parentElement.classList.toggle('active')">
+      <div class="user-list" :class="{'active': showUserList}">
+        <button class="user-list__toggle" @click.prevnet="showUserList = !showUserList">
           <span>
             <span></span>
             <span></span>
@@ -41,7 +41,7 @@
 </template>
 
 <script>
-const API_URL = 'http://chatapi.simplifier.se';
+const API_URL = 'http://localhost:3000';
 
 import Dots from './Dots.vue';
 import Message from './Message.vue';
@@ -62,6 +62,7 @@ export default {
       peopleTyping: [],
       users: [],
       user: this.$store.state.user,
+      showUserList: false,
     }
   },
   computed: {
@@ -117,7 +118,7 @@ export default {
     join(user) {
       this.$store.setUser(user);
       socket.emit('join channel', this.user);
-      window.onunload = () => socket.emit('leave channel', this.user);
+      window.onunload = () => socket.emit('leave channel', { id: this.user.id });
     },
 
     recievePeopleTyping(list) {
@@ -154,8 +155,8 @@ export default {
       });
     },
 
-    updateUserList(userList) {
-      this.users = userList;
+    updateUserList(users) {
+      this.users = users;
     },
 
   },
@@ -362,6 +363,7 @@ select, textarea, input[type='text'], input[type='password'], input[type='dateti
   .chat__messages-container {
     height: 100%;
     flex: 1;
+    display: flex;
   }
 
   .chat__messages {
